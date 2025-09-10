@@ -1,3 +1,5 @@
+import 'dart:math';
+
 /// Top Level Function para aprendizagem de tipos de dados em Dart
 void dataTypes() {
   //TODO: Comentários
@@ -13,7 +15,7 @@ void dataTypes() {
   print('Hello World');
 
   //TODO: Tipos de dados
-  
+
   // Tipagem de dados
   int number = 1;
   double decimalNumber = 1.0;
@@ -39,4 +41,62 @@ void dataTypes() {
   dynamicType = {1, 'a', 2, 'b', 3, 'c'};
   print('dynamicType: $dynamicType - Type: ${dynamicType.runtimeType}');
 
+  //Constantes
+  const constantNumber = 1;
+  // constantNumber = 2;
+
+  final date = DateTime.now();
+  print(date);
+
+  List.generate(10, (index) {
+    index.isOdd ? print(index) : null;
+  });
+
+  // Intepolacao de String
+  print('$date - ${date.runtimeType}');
+
+  String query = '''
+    SELECT * FROM users WHERE id = 1;
+  ''';
+
+  print(query);
+}
+
+void functions() {
+  String printFullName(String first, String last, [String? middle]) {
+    if (middle != null) {
+      return '$first $middle $last';
+    }
+    return '$first, $last';
+  }
+
+  print(printFullName('John', 'Doe', 'Junior'));
+
+  bool valueIsInInterval({required int value, int min = 0, int max = 10}) {
+    print('min: $min - max: $max - value: $value');
+    return value >= min && value <= max;
+  }
+
+  print(valueIsInInterval(value: 5));
+  print(valueIsInInterval(max: 100, value: 7));
+  print(valueIsInInterval(max: 50, min: 75, value: 7));
+
+  static final _random = Random();
+  int luckyNumber() {
+    return _random.nextInt(100);
+  }
+
+  double media(double a, double b, double c, double d, [Function algoritmo = mediaAritmetica]) {
+    return algoritmo(a, b, c, d);
+  }
+
+  double mediaAritmetica(double a, double b, double c, double d) {
+    return (a + b + c + d) / 4;
+  }
+
+  double mediaPonderada(double a, double b, double c, double d) {
+    return (a * 1 + b * 2 * d * 3 + d * 4) / 10;
+  }
+
+  print(media(1, 2, 3, 4, algoritmo: mediaAritmetica));
 }
