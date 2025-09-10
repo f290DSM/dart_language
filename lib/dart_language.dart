@@ -81,22 +81,8 @@ void functions() {
   print(valueIsInInterval(max: 100, value: 7));
   print(valueIsInInterval(max: 50, min: 75, value: 7));
 
-  static final _random = Random();
-  int luckyNumber() {
-    return _random.nextInt(100);
+  int luckyNumber([int limit = 100]) {
+    return Random().nextInt(limit);
   }
 
-  double media(double a, double b, double c, double d, [Function algoritmo = mediaAritmetica]) {
-    return algoritmo(a, b, c, d);
-  }
-
-  double mediaAritmetica(double a, double b, double c, double d) {
-    return (a + b + c + d) / 4;
-  }
-
-  double mediaPonderada(double a, double b, double c, double d) {
-    return (a * 1 + b * 2 * d * 3 + d * 4) / 10;
-  }
-
-  print(media(1, 2, 3, 4, algoritmo: mediaAritmetica));
 }
