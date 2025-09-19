@@ -1,7 +1,23 @@
 
-import 'package:dart_language/dart_language.dart';
+import 'package:dart_language/poo/user.dart';
 
 void main(List<String> arguments) {
-  // dataTypes();
-  functions();
+  var user = User(id: 42, username: 'esdras', password: '123edc');
+  print(user);
+
+  var anonimo = User.anonymous();
+  print(anonimo);
+
+  final json = {
+    'id' : 1,
+    'username' : 'orlando',
+    'password' : 'mudar123'
+  };
+
+  var orlando = User.fromJson(json);
+  print(orlando);
+
+  var jsonAnonimo = anonimo.toJson();
+  print(jsonAnonimo);
+
 }

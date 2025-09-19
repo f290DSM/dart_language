@@ -45,6 +45,20 @@ class User {
   // Computed Property
   String get guiPassword => '*' * (_password?.length ?? 1);
 
+  Map<String, dynamic> toJson() {
+    return {
+      'id': _id,
+      'username': _username,
+      'password': _password,
+    };
+  }
+
+  User.fromJson(Map<String, dynamic> json) {
+    _id = json['id'];
+    _username = json['username'];
+    _password = json['password'];
+  }
+
   @override
   String toString() {
     return '''
