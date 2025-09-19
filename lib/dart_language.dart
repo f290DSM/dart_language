@@ -85,4 +85,67 @@ void functions() {
     return Random().nextInt(limit);
   }
 
+  // Funçoes como Tipo
+  Function dobro = (int number) {
+    return number * 2;
+  };
+
+  print(dobro(2));
+  print(dobro.runtimeType);
+
+  Function multiplier = (int number, int factor) => number * factor;
+
+  print(multiplier(8, 2));
+  print(multiplier.runtimeType);
+
+  final triple = (int v) => multiplier(v, 3);
+
+  print(triple(8));
+  print(triple.runtimeType);
+
+  double mediaAritmetica(double a, double b, double c, double d) {
+    return (a + b + c + d) / 4;
+  }
+
+  double mediaPonderada(double a, double b, double c, double d) {
+    return (a * 1 + b * 3 + c * 2 + d * 4) / 10;
+  }
+
+  double media(
+    double a,
+    double b,
+    double c,
+    double d, {
+    required Function algoritmo,
+  }) {
+    return algoritmo(a, b, c, d);
+  }
+
+  print('Media Aritmetica: ${media(10, 0, 10, 0, algoritmo: mediaAritmetica)}');
+  print('Media Ponderada: ${media(10, 0, 10, 0, algoritmo: mediaPonderada)}');
+
+  void submit() {
+    print('Submit');
+  }
+
+  final button = Button(label: 'Submit', 
+  onPressed: () {
+    print('Primeira açao');
+    print('Segunda açao');
+    print('Terceira açao');
+    print('Quarta açao');
+    print('Quinta açao');
+  });
+  button.onClick();
+}
+
+class Button {
+  String label;
+  Function onPressed;
+
+  Button({required this.label, required this.onPressed});
+
+  void onClick() {
+    onPressed;
+  }
 }
